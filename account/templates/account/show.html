@@ -1,0 +1,127 @@
+{% extends 'base.html' %}
+{% block content %}
+{% include 'snippets/header.html' %}
+<style type="text/css">
+	.my-grid{
+		border: 1px solid black;
+	}
+	.my-grid-item{
+		border: 1px solid blue;
+	}
+	.add__attend {
+		position: absolute;
+		left: 43%;
+		bottom: 5px;
+		z-index: 1;
+	}
+	/* NAVBAR */
+	.backround__blue{
+		background-color: rgb(7, 7, 119);
+		width: 100%;
+		display: flex;
+		justify-content: space-between;
+		padding: 10px 5px 10px 5px;
+	}
+	nav div a {
+		color: white;
+	}
+	.log__out {
+		width: 55px;
+	}
+	.slash {
+		font-weight: 900;
+		/* font-size: 20px; */
+	}
+	.change__password{
+		padding-left: 10px;
+	}
+	.color__yellow{
+		color: yellow;
+		font-weight: 900;
+	}
+	/* STUDENT RESULT AND COURSES */
+	th{
+		border-right: 1px solid black;
+	}
+	tr {
+		border-bottom: 1px solid black;
+		border-right: 1px solid black;
+		border-left: 1px solid black;
+	}
+	td{
+		border-right: 1px solid black;
+	}
+	table {
+		width: 85%;
+		margin-left: auto;
+		margin-right: auto;
+	}
+	.form__b{
+		margin-top: 15px;
+	}
+	.registered__courses{
+		width: 85%;
+	}
+</style>
+<script>
+    const generatePDF = () => {
+        const element = document.getElementById('form-b');
+        html2pdf().from(element).save();
+    }
+</script>
+<div class=" ">
+	{% if attendance %}
+	<div id="form-b" class="form__b">
+		<table class="">
+			<div class="bg-primary mx-auto text-white text-center registered__courses">REGISTERED COURSES </div>
+			<tr>
+			  <th>REGISTERED COURSES</th>
+			  <th>COURSE CREDIT</th>
+			  <th>COURSE HOURS</th>
+			  <th>LECTURER</th>
+			</tr>
+	{% for attends in attendance %}
+	<tr>
+		<td>{{attends.course}}</td>
+		<td>{{attends.course.course_credit}}</td>
+		<td>{{attends.course.course_hours}}</td>
+		<td>{{attends.course.teacher}}</td>
+	</tr>
+	
+	{% endfor %}
+</table>
+	</div>
+	<div class="text-center mt-2">
+		<div class="btn btn-danger btn-lg " onclick="generatePDF()">Download as PDF</div>
+	</div>
+	{%else%}
+	<h1 class="text-center bg-success text-white">You have no course registered yet</h1>
+	{%endif %}
+	{% if course_marks %}
+	 <div class="container mt-3">
+		<table class="w-100">
+			<div class="bg-primary text-white text-center">RESULTS </div>
+			<tr>
+			  <th>COURSE NAME</th>
+			  <th>CONTINUOUS ASSESMENT</th>
+			  <th> EXAM</th>
+			  <th>TOTAL</th>
+			  <th>GRADE</th>
+			</tr>
+	 </div>
+	{% for mark in course_marks %}
+	<tr>
+		<td>{{mark.course}}</td>
+		<td>{{mark.ca}}</td>
+		<td>{{mark.exam}}</td>
+		<td>{{mark.total}}</td>
+		<td>{{mark.grade}}</td>
+	</tr>
+	{% endfor %}
+</table>
+	{%else%}
+	<div>Marks are not yet available</div>
+	{%endif%}
+<a class="btn btn-lg bg-primary text-white add__attend" href="{% url 'new-attendance' %}"> Register a course</a>
+</div>
+{% endblock content %}
