@@ -92,7 +92,7 @@ DATABASES = {
         'NAME':'manageschool',
         'USER': 'postgres',
         'PASSWORD': 'ht14a06411u',
-        'HOST': '127.0.0.1',
+        'HOST': 'https://mycollegeschoolapp.herokuapp.com',
         'PORT': '5432', 
     }
 }
