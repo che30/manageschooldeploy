@@ -17,6 +17,7 @@ def show_teacher_view(request):
     return render(request, 'teacher/show.html',context)
 @login_required(login_url="/login")
 def render_update_marks(request,course_id, id=None):
+   form = None
    exam_type = None
    if id == 1:
        exam_type = 'ca'
