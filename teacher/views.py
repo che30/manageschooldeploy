@@ -4,6 +4,7 @@ from courses.models import Course
 from django.forms import modelformset_factory
 from django.contrib.auth.decorators import login_required
 from account.decorators import allowed_users
+from teacher.models import Teacher
 # from marks.forms import UpdateMarkForm
 from marks.models import Mark
 import datetime
