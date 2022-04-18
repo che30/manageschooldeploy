@@ -61,7 +61,9 @@
 		
 	</div>
 </div>
-<h2 class="text-danger text-center">Reset password not yet implemented</h2>
+<div class="text-center mt-2"><button class="border btn-info text-center click__me " id="click-me">click me</button></div>
+<div id="info" class="d-none">
+	<h2 class="text-danger text-center">Reset password not yet implemented</h2>
 <h3 class="text-center text-success">To login as staff use use one of the following credentails</h3>
 <div class="d-flex justify-content-center">
 	<div>
@@ -97,4 +99,12 @@
 		<span class="text-primary email__font__weight">	email: </span> <span>testtwo@ubuea.cm</span>
 	</div>
 </div>
+</div>
+<script>
+	const clickMe = document.getElementById("click-me");
+	const info = document.getElementById("info");
+	clickMe.addEventListener("click", ()=>{
+		info.classList.remove('d-none');
+	})
+</script>
 {% endblock content %}
