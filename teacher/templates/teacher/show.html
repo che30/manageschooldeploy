@@ -28,12 +28,12 @@
 		<!-- <div class="card card-signin"> -->
 		  <!-- <div class="card-body"> -->
 		   {% if teacher_course %}
-		   <h1 class="text-center bg-primary text-white"> YOUR COURSES TOUGHT </h1>
+		   <h1 class="text-center bg-primary text-white"> YOUR COURSES TAUGHT </h1>
 		   {% for course in teacher_course %}
 		   <div class="d-flex justify-content-around blue__color">
 			 
 			<!-- <a href="/polls/{{ question.id }}/"> -->
-			<div><a href="/my-courses/{{course.id}}/1"><span>CONTINUOS ASSESMENT</span> <span>{{course.name}}</span></a></div>
+			<div><a href="/my-courses/{{course.id}}/1"><span>CONTINUOUS ASSESMENT</span> <span>{{course.name}}</span></a></div>
 			<div><a href="/my-courses/{{course.id}}/2"><span>EXAMS</span> <span>{{course.name}}</span></a></div>
 			<div><a href="/my-courses/{{course.id}}/3"><span>RESIT</span> <span>{{course.name}}</span></a></div>
 		   </div>
